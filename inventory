@@ -1,0 +1,18 @@
+# host group for masters
+[master_nodes]
+master-node ansible_host=192.168.205.210
+
+# host group for etcd
+[etcd]
+master-node ansible_host=192.168.205.210
+
+# host group for workers
+[worker_nodes]
+worker-node-1 ansible_host=192.168.205.211
+worker-node-2 ansible_host=192.168.205.212
+
+# host group for nodes, includes region info
+[nodes]
+master-node ansible_host=192.168.205.210
+worker-node-1 node_labels="{'region': 'infra', 'zone': 'north', 'type': 'worker'}" ansible_host=192.168.205.211
+worker-node-2 node_labels="{'region': 'infra', 'zone': 'south', 'type': 'worker'}" ansible_host=192.168.205.212

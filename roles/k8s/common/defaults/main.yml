@@ -1,0 +1,47 @@
+k8s_common_add_packages_keys:
+- key: https://packages.cloud.google.com/yum/doc/yum-key.gpg
+- key: https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg
+- key: https://download.docker.com/linux/centos/gpg
+
+k8s_common_add_packages_repositories:
+- name: Docker-Repository
+  description: "Docker Repository"
+  baseurl: https://download.docker.com/linux/centos/8/x86_64/stable/
+- name: Kubernetes-Repository
+  description: Kubernetes YUM repository
+  baseurl: "https://packages.cloud.google.com/yum/repos/kubernetes-el7-x86_64"
+
+k8s_common_add_packages_names:
+- name: curl
+- name: yum-utils
+- name: containerd.io
+- name: kubeadm
+- name: kubelet
+- name: kubectl
+
+k8s_common_remove_packages_names:
+- name: docker
+- name: docker-client
+- name: docker-client-latest
+- name: docker-common
+- name: docker-latest
+- name: docker-latest-logrotate
+- name: docker-logrotate
+- name: docker-engine
+
+k8s_common_modprobe:
+  - name: overlay
+  - name: br_netfilter
+
+k8s_common_sysctl:
+  - name: net.bridge.bridge-nf-call-iptables
+    value: 1
+  - name: net.ipv4.ip_forward
+    value: 1
+  - name: net.bridge.bridge-nf-call-ip6tables
+    value: 1
+
+k8s_common_admin_user: "ansible"
+k8s_common_admin_group: "ansible"
+
+
