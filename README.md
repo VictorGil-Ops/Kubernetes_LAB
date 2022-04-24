@@ -102,7 +102,7 @@ Run
 
 ```
 
-Copy KUBECONFIG to local machine
+Copy KUBECONFIG to local:
 
 ```bash
 
@@ -110,12 +110,20 @@ scp ansible@master-node:/home/ansible/.kube/config ~/.kube/config
 
 ```
 
-Access to dashboard
+Access to dashboard:
 
 ` https://master-node:30002/#/login `
 
 The token in inside ` roles/k8s-cluster-dash_token-join-command `.
 
+Add ROLES label to workers nodes:
+
+```bash
+
+ kubectl label node worker-node1 node-role.kubernetes.io/worker=worker
+ kubectl label node worker-node2 node-role.kubernetes.io/worker=worker
+
+```
 
 ## MANAGE CLUSTERS HELP
 
