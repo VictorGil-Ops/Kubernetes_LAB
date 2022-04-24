@@ -17,6 +17,8 @@
 
 - I use [WSL](https://docs.microsoft.com/en-us/windows/wsl/install) or [MSYS2](https://www.msys2.org/).
 
+- Ansible command [help](https://ansible-tips-and-tricks.readthedocs.io/en/latest/ansible/commands/) 
+
 > Intall requisite - Ansible and ansible.posix
 
 ```bash
