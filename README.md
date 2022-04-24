@@ -1,8 +1,8 @@
 # Deployment Kubernetes cluster with Ansible
 
-` this repo based in a itwonderland lab, thanks for it https://www.itwonderlab.com `
+&#9762; `this repo based in a itwonderland lab, thanks for it https://www.itwonderlab.com `
 
-- This repository contain a playbook for kubernetes cluster easy installation based in Centos 8.
+- Repository contains a playbook for kubernetes cluster easy installation based in Centos 8.
 
 - You can prepare virtual machines with a [Vagrant](https://github.com/edib/many_vagrant_machines).
 
@@ -108,7 +108,8 @@ Run
 
 - [Kubernet Objects](https://kubernetes.io/es/docs/concepts/overview/working-with-objects/)
 
-## roadmap TODO
+## Roadmap TODO
 
-- [] enable and configure fw
-- [] istio deployment
+- &#9989; deploy dashboard
+- &#9744; enable and configure firewall
+- &#9744; istio deployment
