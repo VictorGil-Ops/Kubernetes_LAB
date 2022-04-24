@@ -1,7 +1,0 @@
----
-- hosts: master-node
-  become: yes
-  vars_files:
-  - ../edit.vars.yml
-  roles:
-    - { role: k8s/dashboard}
