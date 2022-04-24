@@ -1,0 +1,3 @@
+---
+- import_playbook: roles/deploy-k8s-nodes.yml
+- import_playbook: roles/deploy-dashboard.yml
