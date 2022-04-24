@@ -1,0 +1,6 @@
+.vagrant/
+.private/
+*-join-command
+*.log
+id_rsa*
+*.key
