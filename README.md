@@ -10,7 +10,7 @@
 
 - I use [WSL](https://docs.microsoft.com/en-us/windows/wsl/install) or [MSYS2](https://www.msys2.org/).
 
-> Intall requisite - ansible.posix
+> Intall requisite - Ansible and ansible.posix
 
 ```bash
 
