@@ -1,0 +1,29 @@
+---
+# Check the last version https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/
+  - name: Install Dashboard from oficial repo
+    become: false
+    command: kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/{{ dashboard_version }}/aio/deploy/recommended.yaml
+    register: dashboard_installed  
+
+  - name: Configuring dashboard service
+    template:
+     src: kubernetes-dashboard-service-np.yaml
+     dest: /home/{{ master_admin_user }}/kubernetes-dashboard-service-np.yaml
+    register: template_copied
+    when: dashboard_installed is succeeded
+    
+
+  - name: Apply kubectl dashboard service
+    become: false
+    command: kubectl apply -f /home/{{ master_admin_user }}/kubernetes-dashboard-service-np.yaml
+    when: template_copied is succeeded
+
+  - name: Show dashboard token
+    become_user: '{{ master_admin_user }}'
+    shell: |  
+      kubectl -n kubernetes-dashboard describe secret $(kubectl -n kubernetes-dashboard get secret | grep admin-user | awk '{print $1}')
+    register: dash_token
+
+  - name: Copy dash token command for {{ cluster_name }} cluster to local file
+    become: false
+    local_action: copy content="{{ dash_token.stdout }}" dest="./{{ cluster_name }}-dash_token-join-command"
