@@ -1,0 +1,11 @@
+
+k8s_master_admin_user: '{{ master_admin_user }}'
+k8s_master_admin_group: '{{ master_admin_group }}'
+
+k8s_master_node_name: '{{ master_node_name }}'
+k8s_cluster_name:     '{{ cluster_name }}'
+
+k8s_master_apiserver_advertise_address: '{{ master_apiserver_advertise_address }}'
+k8s_master_pod_network_cidr: '{{ master_pod_network_cidr }}'
+
+

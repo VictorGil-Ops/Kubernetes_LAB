@@ -1,0 +1,47 @@
+---
+# From https://www.cyberciti.biz/faq/ansible-yum-update-all-packages-on-ubuntu-debian-linux/
+- name: Show host's ip
+  register: k8s_node_public_ip
+  debug:
+    msg: "{{ ansible_default_ipv4.address }}"
+
+- name : Repair mirrorlist and update
+  shell: |
+    sed -i -e "s|mirrorlist=|#mirrorlist=|g" /etc/yum.repos.d/CentOS-*
+    sed -i -e "s|#baseurl=http://mirror.centos.org|baseurl=http://vault.centos.org|g" /etc/yum.repos.d/CentOS-*
+    yum update -y --nobest
+
+- name: Add new repositories keys
+  rpm_key:
+    key='{{item.key}}'
+  with_items: "{{ linux_add_packages_keys | default([])}}"
+  when: linux_add_packages_keys is defined and not (linux_add_packages_keys is none or linux_add_packages_keys | trim == '')
+  register: yumnewkeys
+
+- name: Add new repositories to sources
+  yum_repository:
+    name='{{item.name}}'
+    description='{{item.description}}'
+    baseurl='{{item.baseurl}}'
+  with_items: "{{ linux_add_packages_repositories | default([])}}"
+  when: linux_add_packages_repositories is defined and not (linux_add_packages_repositories is none or linux_add_packages_repositories | trim == '')
+
+- name: Force update cache if new keys added
+  set_fact:
+        linux_add_packages_cache_valid_time: 0
+  when: yumnewkeys.changed
+
+- name: Remove packages
+  yum:
+    name='{{item.name}}'
+    state=absent
+  with_items: "{{ linux_remove_packages_names | default([])}}"
+  when: linux_remove_packages_names is defined and not (linux_remove_packages_names is none or linux_remove_packages_names | trim == '')
+
+- name: Install packages
+  yum:
+    name='{{item.name}}'
+    state=present
+    update_cache=yes
+  with_items: "{{ linux_add_packages_names | default([])}}"
+  when: linux_add_packages_names is defined and not (linux_add_packages_names is none or linux_add_packages_names | trim == '')

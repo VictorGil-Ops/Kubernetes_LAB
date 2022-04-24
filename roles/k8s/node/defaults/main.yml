@@ -1,0 +1,7 @@
+
+k8s_node_admin_user:  '{{ master_admin_user }}'
+k8s_node_admin_group: '{{ master_admin_group }}'
+
+k8s_node_node_name: '{{ node_node_name }}'
+k8s_cluster_name:   '{{ cluster_name }}'
+
