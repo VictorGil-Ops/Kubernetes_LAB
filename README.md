@@ -1,12 +1,12 @@
-# ansible-install-kubernetes-centos8
+# Deployment Kubernetes cluster with Ansible
 
-This repository contain a playbook for kubernetes cluster easy installation based in Centos 8.
+- This repository contain a playbook for kubernetes cluster easy installation based in Centos 8.
 
-For prepare virtual machines with [Vagrant](https://github.com/edib/many_vagrant_machines).
+- For prepare virtual machines with [Vagrant](https://github.com/edib/many_vagrant_machines).
 
 ## Preparare Ansible Control Node
 
-I use [WSL](https://docs.microsoft.com/en-us/windows/wsl/install) or MSYS2.
+- I use [WSL](https://docs.microsoft.com/en-us/windows/wsl/install) or MSYS2.
 
 > Intall requisite - ansible.posix
 
