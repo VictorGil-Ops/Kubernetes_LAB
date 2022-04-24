@@ -85,9 +85,20 @@ dashboard_version: "v2.5.0"
 
 3. How run a playbook
 
+
+Mark or desmark role
+
+```bash
+---
+- import_playbook: roles/deploy-k8s-nodes.yml
+#- import_playbook: roles/deploy-dashboard.yml
+
+```
+Run
+
 ```bash
 
-    ansible-playbook run.me.yml -v
+ ansible-playbook run.me.yml -v
 
 ```
 
