@@ -1,18 +1,20 @@
 # Deployment Kubernetes cluster with Ansible
 
+` this repo based in a itwonderland lab, thanks for it https://www.itwonderlab.com `
+
 - This repository contain a playbook for kubernetes cluster easy installation based in Centos 8.
 
-- For prepare virtual machines with [Vagrant](https://github.com/edib/many_vagrant_machines).
+- You can prepare virtual machines with a [Vagrant](https://github.com/edib/many_vagrant_machines).
 
 ## Preparare Ansible Control Node
 
-- I use [WSL](https://docs.microsoft.com/en-us/windows/wsl/install) or MSYS2.
+- I use [WSL](https://docs.microsoft.com/en-us/windows/wsl/install) or [MSYS2](https://www.msys2.org/).
 
 > Intall requisite - ansible.posix
 
 ```bash
 
-ansible-galaxy collection install ansible.posix
+ ansible-galaxy collection install ansible.posix
 
 ```
 
@@ -22,32 +24,32 @@ ansible-galaxy collection install ansible.posix
 
 ```bash
 
-sudo adduser ansible
-sudo passwd ansible
+ sudo adduser ansible
+ sudo passwd ansible
 
 ```
 
 2. Generate ssh key, path "~/.ssh/id_rsa.pub"
 
 ```bash
-su - ansible
-mkdir .ssh && cd .ssh
-ssh-keygen -t rsa
-cat id.rsa.pub ## paste inside ssh_prepare_node.sh << PASTE PUBLIC_KEY
+ su - ansible
+ mkdir .ssh && cd .ssh
+ ssh-keygen -t rsa
+ cat id.rsa.pub ## paste inside ssh_prepare_node.sh << PASTE PUBLIC_KEY
 
 ```
 
-3. Copy the public key in `prepare_nodes\prepare_node.sh` << PASTE PUBLIC_KEY
+3. Copy the public key in `prepare_nodes\prepare_nodes.sh` show it for more info.
 
-4. Execute the script on kubernetes each k8s node.
+4. Execute the script `prepare_nodes.sh` on kubernetes for each one k8s node.
 
-This script create a ansible user and add the ssh key inside `authorized_keys`.
+This script create a ansible user and add the ssh key inside `.ssh/authorized_keys`.
 
 ## Ansible playbook
 
-1. Check and modify the file 'inventory' and add your ip nodes
+1. Check and modify the file `inventory` and add your ip nodes
 
-> example:
+> file: inventory
 
 ```bash
 
@@ -60,14 +62,42 @@ worker-node2 ansible_host=192.168.205.212
 
 ```
 
-2. Run a playbook
+2. Check a defaut vars
+
+> file: edit.vars.yml
 
 ```bash
 
-    ansible-playbook runme.yml -v
+master_admin_user: "ansible"
+master_admin_group: "ansible"
+
+master_apiserver_advertise_address: "192.168.205.210"
+master_pod_network_cidr: "192.168.112.0/20"
+
+master_node_name: "k8s-m"
+node_node_name: "k8s-n"
+cluster_name: "k8s-cluster"
+
+# Check the last version https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/
+dashboard_version: "v2.5.0"
 
 ```
 
-## MANAGE THE CLUSTER
+3. How run a playbook
 
-[Kubeadm](https://kubernetes.io/docs/reference/setup-tools/kubeadm/)
+```bash
+
+    ansible-playbook run.me.yml -v
+
+```
+
+## MANAGE CLUSTERS HELP
+
+- [Kubeadm](https://kubernetes.io/docs/reference/setup-tools/kubeadm/)
+
+- [Kubernet Objects](https://kubernetes.io/es/docs/concepts/overview/working-with-objects/)
+
+## roadmap TODO
+
+- [] enable and configure fw
+- [] istio deployment
