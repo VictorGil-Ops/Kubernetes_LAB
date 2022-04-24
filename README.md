@@ -6,6 +6,13 @@
 
 - You can prepare virtual machines with a [Vagrant](https://github.com/edib/many_vagrant_machines).
 
+> Minimun requisites for node
+
+|  node  |   cpu  | memory |
+|:------:|:------:|:------:|
+| master | 2vcore | 2048mb |
+| worker | 1vcore | 2048mb |
+
 ## Preparare Ansible Control Node
 
 - I use [WSL](https://docs.microsoft.com/en-us/windows/wsl/install) or [MSYS2](https://www.msys2.org/).
