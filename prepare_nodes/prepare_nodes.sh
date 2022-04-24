@@ -6,6 +6,10 @@ PUB_KEY='<PASTE PUBLIC-KEY>'
 echo "Creating ansible user"
 useradd -p $(openssl rand -base64 14) -b /home/ -m $ANS_USR
 
+# Activate wheel group
+echo "Activate wheel group"
+sed -i.orig 's/# %wheel\s*ALL=(ALL)\s*NOPASSWD:\s*ALL/%wheel\tALL=(ALL)\tNOPASSWD: ALL/g' /etc/sudoers
+
 # Authorize public key
 echo "Authorize public key"
 mkdir /home/$ANS_USR/.ssh
