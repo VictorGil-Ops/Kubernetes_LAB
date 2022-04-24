@@ -37,11 +37,11 @@ cat id.rsa.pub ## paste inside ssh_prepare_node.sh << PASTE PUBLIC_KEY
 
 ```
 
-3. Copy the public key in `ssh_prepare_remote_nodes\ssh_prepare_node.sh` << PASTE PUBLIC_KEY
+3. Copy the public key in `prepare_nodes\prepare_node.sh` << PASTE PUBLIC_KEY
 
-4. Execute the script on kubernetes cluster
+4. Execute the script on kubernetes each k8s node.
 
-This script create a ansible user and add the ssh key.
+This script create a ansible user and add the ssh key inside `authorized_keys`.
 
 ## Ansible playbook
 
@@ -64,7 +64,7 @@ worker-node2 ansible_host=192.168.205.212
 
 ```bash
 
-    ansible-playbook setup-nodes.yml -v
+    ansible-playbook runme.yml -v
 
 ```
 
