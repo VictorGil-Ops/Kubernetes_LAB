@@ -114,7 +114,7 @@ Access to dashboard:
 
 ` https://master-node:30002/#/login `
 
-The token in inside ` roles/k8s-cluster-dash_token-join-command `.
+You find the token inside ` roles/k8s-cluster-dash_token-join-command `.
 
 Add ROLES label to workers nodes:
 
