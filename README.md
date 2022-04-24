@@ -108,6 +108,8 @@ Run
 
 - [Kubernet Objects](https://kubernetes.io/es/docs/concepts/overview/working-with-objects/)
 
+- [kubectl](https://kubernetes.io/docs/reference/kubectl/)
+
 ## Roadmap TODO
 
 - &#9989; deploy dashboard
