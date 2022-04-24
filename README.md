@@ -102,6 +102,21 @@ Run
 
 ```
 
+Copy KUBECONFIG to local machine
+
+```bash
+
+scp ansible@master-node:/home/ansible/.kube/config ~/.kube/config
+
+```
+
+Access to dashboard
+
+` https://master-node:30002/#/login `
+
+The token in inside ` roles/k8s-cluster-dash_token-join-command `.
+
+
 ## MANAGE CLUSTERS HELP
 
 - [Kubeadm](https://kubernetes.io/docs/reference/setup-tools/kubeadm/)
