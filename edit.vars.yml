@@ -1,0 +1,12 @@
+master_admin_user: "ansible"
+master_admin_group: "ansible"
+
+master_apiserver_advertise_address: "192.168.205.210"
+master_pod_network_cidr: "192.168.112.0/20"
+
+master_node_name: "k8s-m"
+node_node_name: "k8s-n"
+cluster_name: "k8s-cluster"
+
+# Check the last version https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/
+dashboard_version: "v2.5.0"
