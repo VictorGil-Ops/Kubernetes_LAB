@@ -19,7 +19,7 @@
 
 - Ansible command [help](https://ansible-tips-and-tricks.readthedocs.io/en/latest/ansible/commands/) 
 
-> Intall requisite - Ansible and ansible.posix
+> Install requisite - Ansible and ansible.posix
 
 ```bash
 
